@@ -1,7 +1,8 @@
-from django.db import models
+from django.db import models #here db is module and models is a class, Contains Model class + fields + helper functions
 from django.contrib.auth.models import User
-
-# Create your models here.
+#contrib is moduel which Contains optional “contributed” modules (like auth, admin, sessions)
+#models is moduel Contains model classes related to auth, including User
+#User is class, its a built-in Django model class representing a user in the database
 
 
 class Topic(models.Model):
@@ -9,6 +10,8 @@ class Topic(models.Model):
     
     def __str__(self):
         return self.name
+#__str__ is a special method in a Django model that tells Python how to display the object as a string.
+#When you print() the object or see it in Django admin, it will show self.name instead of <Student object>. Makes objects readable and meaningful.
 
 class Room(models.Model):
     host=models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  
